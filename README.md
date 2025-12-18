@@ -9,7 +9,7 @@ Built with **Laravel + Inertia.js + React + TailwindCSS + ShadCN UI**, FoodieLan
 
 ## 🌐 GitHub Repository
 
-[https://github.com/said-ouhammou/foodieland](https://github.com/said-ouhammou/foodieland.git)
+[https://github.com/said-ouhammou/foodie-land.git](https://github.com/said-ouhammou/foodie-land.git.git)
 
 ---
 
@@ -44,8 +44,8 @@ Follow these steps to run FoodieLand locally:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/said-ouhammou/foodieland.git
-cd foodieland
+git clone https://github.com/said-ouhammou/foodie-land.git.git
+cd foodie-land
 ```
 
 ### 2. Install Backend Dependencies
