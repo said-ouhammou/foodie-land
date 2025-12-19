@@ -15,4 +15,12 @@ class Category extends Model
         'image',
         'is_active',
     ];
+
+    /**
+     * Get the recipes for the category
+     */
+    public function recipes(): HasMany
+    {
+        return $this->hasMany(Recipe::class);
+    }
 }

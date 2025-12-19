@@ -3,6 +3,7 @@
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
@@ -17,6 +18,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::resource('categories', CategoryController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+    Route::resource('recipes', RecipeController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
 });
 
 require __DIR__.'/settings.php';
