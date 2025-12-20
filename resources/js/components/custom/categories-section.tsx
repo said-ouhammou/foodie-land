@@ -46,12 +46,6 @@ const categories: Category[] = [
         color: '#E15D44', // Red-Orange
         image_url: '/images/soups.jpg',
     },
-    {
-        id: '8',
-        title: 'Smoothies',
-        color: '#DFCFBE', // Beige
-        image_url: '/images/smoothies.jpg',
-    },
 ];
 
 export default function CategoriesSection() {
