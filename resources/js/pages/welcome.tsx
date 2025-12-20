@@ -1,4 +1,5 @@
 import AppLogoIcon from '@/components/app-logo-icon';
+import CategoriesSection from '@/components/custom/categories-section';
 import Header from '@/components/custom/header';
 import HeroSection from '@/components/custom/hero-section';
 import { type SharedData } from '@/types';
@@ -19,6 +20,7 @@ export default function Welcome() {
 
             <Header />
             <HeroSection />
+            <CategoriesSection />
             <div className="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0">
                 <main className="flex flex-col items-center">
                     <AppLogoIcon className="mb-4 h-24" />
