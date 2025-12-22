@@ -26,3 +26,14 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
+
+
+# Allow recipe images
+!/storage
+!/storage/app
+!/storage/app/public
+!/storage/app/public/recipes
+!/storage/app/public/recipes/**
+!/storage/app/public/categories
+!/storage/app/public/categories/**
