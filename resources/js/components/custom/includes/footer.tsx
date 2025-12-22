@@ -1,4 +1,4 @@
-import AppContainer from './app-container';
+import AppContainer from '../app-container';
 
 export default function Footer() {
     return (

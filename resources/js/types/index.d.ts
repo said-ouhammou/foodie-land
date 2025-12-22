@@ -1,5 +1,7 @@
 import { InertiaLinkProps } from '@inertiajs/react';
 import { LucideIcon } from 'lucide-react';
+import { Category } from './Category';
+import { Recipe } from './Recipe';
 
 export interface Auth {
     user: User;
@@ -28,6 +30,8 @@ export interface SharedData {
     auth: Auth;
     sidebarOpen: boolean;
     [key: string]: unknown;
+    categories: Category[];
+    recipes: Recipe[];
 }
 
 export interface User {

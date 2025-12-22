@@ -1,16 +1,13 @@
 import { Link } from '@inertiajs/react';
 import { CirclePlay, ForkKnife, Timer } from 'lucide-react';
-import { Button } from '../ui/button';
-import AppContainer from './app-container';
+import { Button } from '../../ui/button';
+import AppContainer from '../app-container';
 
 export default function HeroSection() {
     return (
         <section id="hero-section" className="py-6">
             <AppContainer>
                 <div className="relative grid min-h-[500px] lg:grid-cols-2">
-                    {/* ----------------------------------------------------- */}
-                    {/* TODO: Need to add circulage badge */}
-                    {/* ----------------------------------------------------- */}
                     <div
                         id="left-section"
                         className="d-flex order-2 items-center rounded-b-4xl bg-[#E7FAFE] p-6 sm:p-12 lg:order-1 lg:rounded-s-4xl lg:rounded-br-none"

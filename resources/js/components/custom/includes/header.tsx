@@ -1,5 +1,6 @@
-import AppLogoIcon from '../app-logo-icon';
-import AppContainer from './app-container';
+import { Link } from '@inertiajs/react';
+import AppLogoIcon from '../../app-logo-icon';
+import AppContainer from '../app-container';
 
 export default function Header() {
     return (
@@ -24,7 +25,9 @@ export default function Header() {
                         )}
                     </nav> */}
             <AppContainer>
-                <AppLogoIcon className="h-6" />
+                <Link href="/">
+                    <AppLogoIcon className="h-6" />
+                </Link>
             </AppContainer>
         </header>
     );

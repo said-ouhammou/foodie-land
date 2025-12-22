@@ -4,13 +4,19 @@ use Inertia\Inertia;
 use Laravel\Fortify\Features;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CategoryController;
 
-Route::get('/', function () {
-    return Inertia::render('welcome', [
-        'canRegister' => Features::enabled(Features::registration()),
-    ]);
-})->name('home');
+// Route::get('/', function () {
+//     return Inertia::render('site/welcome', [
+//         'canRegister' => Features::enabled(Features::registration()),
+//     ]);
+// })->name('home');
+
+
+    Route::get('/', [WelcomeController::class,"index"])->name('home');
+    Route::get('/{recipe}/details', [WelcomeController::class,"show"]);
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
