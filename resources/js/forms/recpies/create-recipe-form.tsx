@@ -98,11 +98,11 @@ export default function CreateRecipeForm({
             cook_time: 0,
             ingredients: [{ title: '', short_description: '' }],
             directions: [{ title: '', short_description: '' }],
-            calories: '',
-            total_fats: '',
-            proteins: '',
-            carbs: '',
-            cholesterol: '',
+            calories: null,
+            total_fats: null,
+            proteins: null,
+            carbs: null,
+            cholesterol: null,
         },
     });
 
@@ -196,11 +196,11 @@ export default function CreateRecipeForm({
             cook_time: 0,
             ingredients: [{ title: '', short_description: '' }],
             directions: [{ title: '', short_description: '' }],
-            calories: '',
-            total_fats: '',
-            proteins: '',
-            carbs: '',
-            cholesterol: '',
+            calories: null,
+            total_fats: null,
+            proteins: null,
+            carbs: null,
+            cholesterol: null,
         });
         setPreviewFile(null);
         if (fileInputRef.current) {
