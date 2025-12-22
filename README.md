@@ -13,16 +13,6 @@ Built with **Laravel + Inertia.js + React + TailwindCSS + ShadCN UI**, FoodieLan
 
 ---
 
-## ✨ Features
-
-- 🧾 Browse all recipes with a clean, responsive UI
-- 🔍 Search and filter recipes by title, ingredients, or categories
-- 📖 View detailed recipe pages with instructions and ingredients
-- 🛠️ Admin dashboard for **adding, editing, and deleting recipes**
-- 📱 Fully responsive design for desktop and mobile
-
----
-
 ## 🧱 Tech Stack
 
 | Layer         | Technology    |
