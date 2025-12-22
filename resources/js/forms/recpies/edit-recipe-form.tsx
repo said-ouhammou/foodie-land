@@ -262,11 +262,11 @@ export default function EditRecipeForm({
             category_id: recipe.category_id.toString() || '',
             prep_time: recipe.prep_time || 0,
             cook_time: recipe.cook_time || 0,
-            calories: recipe.calories || null,
-            total_fats: recipe.total_fats || null,
-            proteins: recipe.proteins || null,
-            carbs: recipe.carbs || null,
-            cholesterol: recipe.cholesterol || null,
+            calories: recipe.calories?.toString() || '',
+            total_fats: recipe.total_fats?.toString() || '',
+            proteins: recipe.proteins?.toString() || '',
+            carbs: recipe.carbs?.toString() || '',
+            cholesterol: recipe.cholesterol?.toString() || '',
             image: recipe.image || undefined,
             ingredients: recipe.ingredients?.map((ing) => ({
                 id: ing.id,
@@ -499,7 +499,6 @@ export default function EditRecipeForm({
                                                         fieldState.invalid
                                                     }
                                                     {...field}
-                                                    value={field.value ?? ''}
                                                     placeholder="250"
                                                     min="0"
                                                     step="1"
@@ -532,7 +531,6 @@ export default function EditRecipeForm({
                                                         fieldState.invalid
                                                     }
                                                     {...field}
-                                                    value={field.value ?? ''}
                                                     placeholder="12"
                                                     min="0"
                                                     step="0.1"
@@ -565,7 +563,6 @@ export default function EditRecipeForm({
                                                         fieldState.invalid
                                                     }
                                                     {...field}
-                                                    value={field.value ?? ''}
                                                     placeholder="20"
                                                     min="0"
                                                     step="0.1"
@@ -598,7 +595,6 @@ export default function EditRecipeForm({
                                                         fieldState.invalid
                                                     }
                                                     {...field}
-                                                    value={field.value ?? ''}
                                                     placeholder="30"
                                                     min="0"
                                                     step="0.1"
@@ -631,7 +627,6 @@ export default function EditRecipeForm({
                                                         fieldState.invalid
                                                     }
                                                     {...field}
-                                                    value={field.value ?? ''}
                                                     placeholder="50"
                                                     min="0"
                                                     step="1"
