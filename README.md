@@ -51,8 +51,16 @@ cd foodie-land
 ### 2. Install Backend Dependencies
 
 composer install
+
+###
+
 cp .env.example .env
+
+###
+
 php artisan key:generate
+
+###
 
 Update .env with your database credentials.
 
@@ -71,6 +79,9 @@ php artisan storage:link
 ### 6. Install Frontend Dependencies
 
 npm install
+
+###
+
 npm run dev
 
 ### 7. Start the Laravel Server
