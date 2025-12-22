@@ -62,7 +62,7 @@ php artisan migrate
 
 ### 4. Run Seeders
 
-php artisan migrate
+php artisan db:seed
 
 ### 5. Link storage
 
