@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Category;
 use App\Models\Direction;
 use App\Models\Ingredient;
@@ -14,6 +15,7 @@ class Recipe extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'title',
         'slug',
         'short_description',
@@ -21,6 +23,7 @@ class Recipe extends Model
         'category_id',
         'prep_time',
         'cook_time',
+        'featured',
     ];
 
     protected $casts = [
@@ -54,11 +57,20 @@ class Recipe extends Model
             ->withTimestamps();
     }
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
     /**
      * Get total time (prep + cook)
      */
     public function getTotalTimeAttribute(): int
     {
         return $this->prep_time + $this->cook_time;
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return $value ? \Carbon\Carbon::parse($value)->diffForHumans() : null;
     }
 }

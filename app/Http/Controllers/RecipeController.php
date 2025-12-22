@@ -10,6 +10,7 @@ use App\Models\Ingredient;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreRecipeRequest;
 use App\Http\Requests\UpdateRecipeRequest;
@@ -56,6 +57,7 @@ class RecipeController extends Controller
             // Create recipe
             $recipe = Recipe::create([
                 'title' => $validated['title'],
+                'user_id' => Auth::id(),
                 'slug' => $slug,
                 'short_description' => $validated['short_description'],
                 'image' => $imagePath,
@@ -161,6 +163,7 @@ class RecipeController extends Controller
 
             $recipe->update([
                 'title' => $validated['title'],
+                'user_id' => Auth::id(),
                 'slug' => $slug,
                 'short_description' => $validated['short_description'],
                 'image' => $imagePath,

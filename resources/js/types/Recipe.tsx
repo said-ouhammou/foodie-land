@@ -11,11 +11,13 @@ export type Recipe = {
     prep_time: number;
     cook_time: number;
     total_time: number;
+    created_at: string;
 
     category?: Category;
     directions?: Direction[];
     ingredients?: Ingredient[];
     ingredient_recipes?: IngredientRecipe[];
+    user: User;
 };
 
 export interface RecipeCard {
@@ -56,4 +58,9 @@ export type IngredientRecipe = {
     ingredient_id: number;
     title: string | null;
     description: string | null;
+};
+
+export type User = {
+    id?: string;
+    name: string;
 };

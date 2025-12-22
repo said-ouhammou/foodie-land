@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CategorySeeder extends Seeder
@@ -14,6 +16,8 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
+
+        $user = User::first();
 
         $categories = [
             [
@@ -52,6 +56,7 @@ class CategorySeeder extends Seeder
 
         foreach ($categories as $category) {
             Category::create([
+                'user_id' => $user->id,
                 'title' => $category['title'],
                 'slug' => Str::slug($category['title']),
                 'color' => $category['color'],

@@ -2,18 +2,21 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
+use App\Models\User;
 use App\Models\Recipe;
-use App\Models\Ingredient;
+use App\Models\Category;
 use App\Models\Direction;
-use Illuminate\Database\Seeder;
+use App\Models\Ingredient;
 use Illuminate\Support\Str;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Auth;
 
 class RecipeSeeder extends Seeder
 {
     public function run(): void
     {
         // Get all categories
+        $user = User::first();
         $categories = Category::all();
         
         if ($categories->isEmpty()) {
@@ -28,6 +31,7 @@ class RecipeSeeder extends Seeder
                 'short_description' => 'A traditional Italian pasta dish with eggs, cheese, and pancetta.',
                 'prep_time' => 15,
                 'cook_time' => 20,
+                'featured' => 1,
                 'directions' => [
                     ['title' => 'Prepare Ingredients', 'short_description' => 'Chop the pancetta, grate the Parmesan cheese, and beat the eggs in a bowl.'],
                     ['title' => 'Cook Pasta', 'short_description' => 'Cook spaghetti in salted boiling water until al dente. Reserve 1 cup of pasta water.'],
@@ -96,7 +100,9 @@ class RecipeSeeder extends Seeder
         foreach ($recipes as $recipeData) {
             // Create recipe
             $recipe = Recipe::create([
+                'user_id' => $user->id,
                 'title' => $recipeData['title'],
+                'featured' => $recipeData['featured'] ?? false,
                 'short_description' => $recipeData['short_description'],
                 'category_id' => $categories->random()->id,
                 'prep_time' => $recipeData['prep_time'],

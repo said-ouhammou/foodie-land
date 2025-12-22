@@ -11,8 +11,8 @@ export default function CategoryCard({ category }: { category: Category }) {
             }}
         >
             <img
-                src="/images/cat-1.png"
-                alt="br"
+                src={`/storage/${category.image}`}
+                alt={category.title}
                 className="h-24 w-24 object-contain object-center"
             />
             <h3 className="text-md font-semibold tracking-tight">

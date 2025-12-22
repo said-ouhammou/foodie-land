@@ -35,10 +35,10 @@ export default function RecipeDetails({ recipe }: RecipeDetailsProps) {
                                         </div>
                                         <div className="items-between flex flex-col">
                                             <span className="text-xs font-semibold tracking-tight sm:text-sm">
-                                                John Smith
+                                                {recipe.user.name}
                                             </span>
                                             <span className="text-[10px] tracking-tight text-[#00000099] sm:text-xs">
-                                                15 March 2022
+                                                {recipe.created_at}
                                             </span>
                                         </div>
                                     </div>

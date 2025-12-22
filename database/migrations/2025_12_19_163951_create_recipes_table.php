@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('title');
             $table->string('slug')->nullable();
             $table->text('short_description');
@@ -21,6 +22,8 @@ return new class extends Migration
             $table->integer('prep_time')->default(0)->comment('Preparation time in minutes');
             $table->integer('cook_time')->default(0)->comment('Cooking time in minutes');
             $table->integer('total_time')->virtualAs('prep_time + cook_time');
+            $table->boolean('featured')->default(false);
+
             $table->timestamps();
         });
     }

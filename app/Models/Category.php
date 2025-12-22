@@ -9,6 +9,7 @@ class Category extends Model
 {
 
     protected $fillable = [
+        'user_id',
         'title',
         'slug',
         'color',
@@ -19,7 +20,7 @@ class Category extends Model
     /**
      * Get the recipes for the category
      */
-    public function recipes(): HasMany
+    public function recipes()
     {
         return $this->hasMany(Recipe::class);
     }

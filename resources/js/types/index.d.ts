@@ -32,6 +32,7 @@ export interface SharedData {
     [key: string]: unknown;
     categories: Category[];
     recipes: Recipe[];
+    recipe: Recipe;
 }
 
 export interface User {

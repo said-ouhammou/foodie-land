@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
@@ -44,6 +45,7 @@ class CategoryController extends Controller
             }
             
             $category = Category::create([
+                'user_id' => Auth::id(),
                 'title' => $validated['title'],
                 'slug' => $slug,
                 'color' => $validated['color'],
@@ -115,6 +117,7 @@ class CategoryController extends Controller
             }
             
             $category->update([
+                'user_id' => Auth::id(),
                 'title' => $validated['title'],
                 'slug' => $slug,
                 'color' => $validated['color'],

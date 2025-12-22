@@ -7,7 +7,7 @@ import { type SharedData } from '@/types';
 import { Head, usePage } from '@inertiajs/react';
 
 export default function Welcome() {
-    const { categories, recipes } = usePage<SharedData>().props;
+    const { categories, recipes, recipe } = usePage<SharedData>().props;
 
     return (
         <>
@@ -20,7 +20,8 @@ export default function Welcome() {
             </Head>
 
             <Header />
-            <HeroSection />
+
+            <HeroSection recipe={recipe} />
             <CategoriesSection categories={categories} />
             <RecipesSection recipes={recipes} />
             <Footer />
