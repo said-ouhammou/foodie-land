@@ -60,12 +60,20 @@ Update .env with your database credentials.
 
 php artisan migrate
 
-### 4. Install Frontend Dependencies
+### 4. Run Seeders
+
+php artisan migrate
+
+### 5. Link storage
+
+php artisan storage:link
+
+### 6. Install Frontend Dependencies
 
 npm install
 npm run dev
 
-### 5. Start the Laravel Server
+### 7. Start the Laravel Server
 
 php artisan serve
 
