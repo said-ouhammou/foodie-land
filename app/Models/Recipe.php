@@ -23,6 +23,11 @@ class Recipe extends Model
         'category_id',
         'prep_time',
         'cook_time',
+        'calories',
+        'total_fats',
+        'proteins',
+        'carbs',
+        'cholesterol',
         'featured',
     ];
 

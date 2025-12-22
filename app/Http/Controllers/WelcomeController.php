@@ -12,7 +12,7 @@ class WelcomeController extends Controller
     public function index() {
         $categories = Category::latest()->get();
         $recipes = Recipe::with("category:id,title")->latest()->get();
-        $recipe = Recipe::with(["category:id,title,image","user:id,name"])->where('featured',true)->first();
+        $recipe = Recipe::with(["category:id,title,image","user:id,name"])->latest()->first();
 
         return Inertia::render("site/welcome", [
             'categories' => $categories,

@@ -13,6 +13,13 @@ export type Recipe = {
     total_time: number;
     created_at: string;
 
+    // Nutritional information
+    calories?: number | null;
+    total_fats?: number | null;
+    proteins?: number | null;
+    carbs?: number | null;
+    cholesterol?: number | null;
+
     category?: Category;
     directions?: Direction[];
     ingredients?: Ingredient[];
@@ -35,6 +42,13 @@ export interface RecipeCard {
     cook_time: number;
     total_time: number;
     created_at: string;
+
+    // Optional nutritional information for cards
+    calories?: number | null;
+    total_fats?: number | null;
+    proteins?: number | null;
+    carbs?: number | null;
+    cholesterol?: number | null;
 }
 
 export type Direction = {

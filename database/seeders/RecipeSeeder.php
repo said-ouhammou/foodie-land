@@ -24,7 +24,7 @@ class RecipeSeeder extends Seeder
             $categories = Category::factory()->count(5)->create();
         }
 
-        // Sample recipes
+        // Sample recipes with nutritional info
         $recipes = [
             [
                 'title' => 'Classic Spaghetti Carbonara',
@@ -32,6 +32,11 @@ class RecipeSeeder extends Seeder
                 'prep_time' => 15,
                 'cook_time' => 20,
                 'featured' => 1,
+                'calories' => 650,
+                'total_fats' => 32.5,
+                'proteins' => 28.7,
+                'carbs' => 58.2,
+                'cholesterol' => 210,
                 'directions' => [
                     ['title' => 'Prepare Ingredients', 'short_description' => 'Chop the pancetta, grate the Parmesan cheese, and beat the eggs in a bowl.'],
                     ['title' => 'Cook Pasta', 'short_description' => 'Cook spaghetti in salted boiling water until al dente. Reserve 1 cup of pasta water.'],
@@ -53,6 +58,11 @@ class RecipeSeeder extends Seeder
                 'short_description' => 'Quick and healthy vegetable stir fry with tofu in a savory sauce.',
                 'prep_time' => 20,
                 'cook_time' => 15,
+                'calories' => 320,
+                'total_fats' => 14.2,
+                'proteins' => 18.5,
+                'carbs' => 32.8,
+                'cholesterol' => 0,
                 'directions' => [
                     ['title' => 'Prep Vegetables', 'short_description' => 'Chop all vegetables into bite-sized pieces. Press and cube tofu.'],
                     ['title' => 'Make Sauce', 'short_description' => 'Mix soy sauce, garlic, ginger, and cornstarch in a bowl.'],
@@ -76,6 +86,11 @@ class RecipeSeeder extends Seeder
                 'short_description' => 'Soft and chewy homemade chocolate chip cookies.',
                 'prep_time' => 15,
                 'cook_time' => 12,
+                'calories' => 180,
+                'total_fats' => 9.5,
+                'proteins' => 2.1,
+                'carbs' => 23.8,
+                'cholesterol' => 25,
                 'directions' => [
                     ['title' => 'Preheat Oven', 'short_description' => 'Preheat oven to 180°C (350°F). Line baking sheets with parchment paper.'],
                     ['title' => 'Mix Dry Ingredients', 'short_description' => 'In a bowl, whisk together flour, baking soda, and salt.'],
@@ -98,7 +113,7 @@ class RecipeSeeder extends Seeder
         ];
 
         foreach ($recipes as $recipeData) {
-            // Create recipe
+            // Create recipe with nutritional info
             $recipe = Recipe::create([
                 'user_id' => $user->id,
                 'title' => $recipeData['title'],
@@ -107,6 +122,11 @@ class RecipeSeeder extends Seeder
                 'category_id' => $categories->random()->id,
                 'prep_time' => $recipeData['prep_time'],
                 'cook_time' => $recipeData['cook_time'],
+                'calories' => $recipeData['calories'] ?? null,
+                'total_fats' => $recipeData['total_fats'] ?? null,
+                'proteins' => $recipeData['proteins'] ?? null,
+                'carbs' => $recipeData['carbs'] ?? null,
+                'cholesterol' => $recipeData['cholesterol'] ?? null,
                 'image' => 'recipes/' . strtolower(str_replace(' ', '_', $recipeData['title'])) . '.jpg',
             ]);
 

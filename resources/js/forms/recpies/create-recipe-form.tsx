@@ -98,10 +98,14 @@ export default function CreateRecipeForm({
             cook_time: 0,
             ingredients: [{ title: '', short_description: '' }],
             directions: [{ title: '', short_description: '' }],
+            calories: '',
+            total_fats: '',
+            proteins: '',
+            carbs: '',
+            cholesterol: '',
         },
     });
 
-    // Dynamic arrays for ingredients and directions
     const {
         fields: ingredientFields,
         append: appendIngredient,
@@ -138,19 +142,26 @@ export default function CreateRecipeForm({
         }
     };
 
-    // Handle form submission
     const onSubmit = async (data: FormValuesType) => {
         console.log('Submitting recipe data:', data);
 
-        // Create FormData for file upload
         const formData = new FormData();
 
-        // Basic recipe info
         formData.append('title', data.title);
         formData.append('short_description', data.short_description);
         formData.append('category_id', data.category_id);
         formData.append('prep_time', data.prep_time.toString());
         formData.append('cook_time', data.cook_time.toString());
+
+        if (data.calories)
+            formData.append('calories', data.calories.toString());
+        if (data.total_fats)
+            formData.append('total_fats', data.total_fats.toString());
+        if (data.proteins)
+            formData.append('proteins', data.proteins.toString());
+        if (data.carbs) formData.append('carbs', data.carbs.toString());
+        if (data.cholesterol)
+            formData.append('cholesterol', data.cholesterol.toString());
 
         // Image
         if (data.image) {
@@ -185,6 +196,11 @@ export default function CreateRecipeForm({
             cook_time: 0,
             ingredients: [{ title: '', short_description: '' }],
             directions: [{ title: '', short_description: '' }],
+            calories: '',
+            total_fats: '',
+            proteins: '',
+            carbs: '',
+            cholesterol: '',
         });
         setPreviewFile(null);
         if (fileInputRef.current) {
@@ -379,6 +395,175 @@ export default function CreateRecipeForm({
                                     )}
                                 />
                             </FieldGroup>
+                        </div>
+
+                        {/* Nutritional Information Section */}
+                        <div className="space-y-6">
+                            <h3 className="text-lg font-semibold">
+                                Nutritional Information (Optional)
+                            </h3>
+
+                            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5">
+                                <FieldGroup>
+                                    <Controller
+                                        name="calories"
+                                        control={control}
+                                        render={({ field, fieldState }) => (
+                                            <Field>
+                                                <FieldLabel htmlFor="calories">
+                                                    Calories (kcal)
+                                                </FieldLabel>
+                                                <Input
+                                                    type="number"
+                                                    id="calories"
+                                                    aria-invalid={
+                                                        fieldState.invalid
+                                                    }
+                                                    {...field}
+                                                    placeholder="250"
+                                                    min="0"
+                                                    step="1"
+                                                />
+                                                {fieldState.invalid && (
+                                                    <FieldError
+                                                        errors={[
+                                                            fieldState.error,
+                                                        ]}
+                                                    />
+                                                )}
+                                            </Field>
+                                        )}
+                                    />
+                                </FieldGroup>
+
+                                <FieldGroup>
+                                    <Controller
+                                        name="total_fats"
+                                        control={control}
+                                        render={({ field, fieldState }) => (
+                                            <Field>
+                                                <FieldLabel htmlFor="total_fats">
+                                                    Total Fats (g)
+                                                </FieldLabel>
+                                                <Input
+                                                    type="number"
+                                                    id="total_fats"
+                                                    aria-invalid={
+                                                        fieldState.invalid
+                                                    }
+                                                    {...field}
+                                                    placeholder="12"
+                                                    min="0"
+                                                    step="0.1"
+                                                />
+                                                {fieldState.invalid && (
+                                                    <FieldError
+                                                        errors={[
+                                                            fieldState.error,
+                                                        ]}
+                                                    />
+                                                )}
+                                            </Field>
+                                        )}
+                                    />
+                                </FieldGroup>
+
+                                <FieldGroup>
+                                    <Controller
+                                        name="proteins"
+                                        control={control}
+                                        render={({ field, fieldState }) => (
+                                            <Field>
+                                                <FieldLabel htmlFor="proteins">
+                                                    Proteins (g)
+                                                </FieldLabel>
+                                                <Input
+                                                    type="number"
+                                                    id="proteins"
+                                                    aria-invalid={
+                                                        fieldState.invalid
+                                                    }
+                                                    {...field}
+                                                    placeholder="20"
+                                                    min="0"
+                                                    step="0.1"
+                                                />
+                                                {fieldState.invalid && (
+                                                    <FieldError
+                                                        errors={[
+                                                            fieldState.error,
+                                                        ]}
+                                                    />
+                                                )}
+                                            </Field>
+                                        )}
+                                    />
+                                </FieldGroup>
+
+                                <FieldGroup>
+                                    <Controller
+                                        name="carbs"
+                                        control={control}
+                                        render={({ field, fieldState }) => (
+                                            <Field>
+                                                <FieldLabel htmlFor="carbs">
+                                                    Carbs (g)
+                                                </FieldLabel>
+                                                <Input
+                                                    type="number"
+                                                    id="carbs"
+                                                    aria-invalid={
+                                                        fieldState.invalid
+                                                    }
+                                                    {...field}
+                                                    placeholder="30"
+                                                    min="0"
+                                                    step="0.1"
+                                                />
+                                                {fieldState.invalid && (
+                                                    <FieldError
+                                                        errors={[
+                                                            fieldState.error,
+                                                        ]}
+                                                    />
+                                                )}
+                                            </Field>
+                                        )}
+                                    />
+                                </FieldGroup>
+
+                                <FieldGroup>
+                                    <Controller
+                                        name="cholesterol"
+                                        control={control}
+                                        render={({ field, fieldState }) => (
+                                            <Field>
+                                                <FieldLabel htmlFor="cholesterol">
+                                                    Cholesterol (mg)
+                                                </FieldLabel>
+                                                <Input
+                                                    type="number"
+                                                    id="cholesterol"
+                                                    aria-invalid={
+                                                        fieldState.invalid
+                                                    }
+                                                    {...field}
+                                                    placeholder="50"
+                                                    min="0"
+                                                    step="1"
+                                                />
+                                                {fieldState.invalid && (
+                                                    <FieldError
+                                                        errors={[
+                                                            fieldState.error,
+                                                        ]}
+                                                    />
+                                                )}
+                                            </Field>
+                                        )}
+                                    />
+                                </FieldGroup>
+                            </div>
                         </div>
 
                         {/* Image Upload */}

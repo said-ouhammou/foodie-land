@@ -20,7 +20,6 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::with('category:id,title,color')->latest()->get();
-
         return Inertia::render("recipes/index", [
             'recipes' => $recipes,
         ]);
@@ -54,8 +53,8 @@ class RecipeController extends Controller
                 $slug = $slug . '-' . ($slugCount + 1);
             }
 
-            // Create recipe
-            $recipe = Recipe::create([
+            // Create recipe with nutritional info
+            $recipeData = [
                 'title' => $validated['title'],
                 'user_id' => Auth::id(),
                 'slug' => $slug,
@@ -64,7 +63,26 @@ class RecipeController extends Controller
                 'category_id' => $validated['category_id'],
                 'prep_time' => $validated['prep_time'],
                 'cook_time' => $validated['cook_time'],
-            ]);
+            ];
+
+            // Add nutritional info if provided
+            if (isset($validated['calories']) && $validated['calories'] !== '') {
+                $recipeData['calories'] = $validated['calories'];
+            }
+            if (isset($validated['total_fats']) && $validated['total_fats'] !== '') {
+                $recipeData['total_fats'] = $validated['total_fats'];
+            }
+            if (isset($validated['proteins']) && $validated['proteins'] !== '') {
+                $recipeData['proteins'] = $validated['proteins'];
+            }
+            if (isset($validated['carbs']) && $validated['carbs'] !== '') {
+                $recipeData['carbs'] = $validated['carbs'];
+            }
+            if (isset($validated['cholesterol']) && $validated['cholesterol'] !== '') {
+                $recipeData['cholesterol'] = $validated['cholesterol'];
+            }
+
+            $recipe = Recipe::create($recipeData);
 
             // Handle ingredients
             foreach ($validated['ingredients'] as $ingredientData) {
@@ -161,7 +179,8 @@ class RecipeController extends Controller
                 }
             }
 
-            $recipe->update([
+            // Prepare update data
+            $updateData = [
                 'title' => $validated['title'],
                 'user_id' => Auth::id(),
                 'slug' => $slug,
@@ -170,7 +189,26 @@ class RecipeController extends Controller
                 'category_id' => $validated['category_id'],
                 'prep_time' => $validated['prep_time'],
                 'cook_time' => $validated['cook_time'],
-            ]);
+            ];
+
+            // Add nutritional info if provided
+            if (isset($validated['calories'])) {
+                $updateData['calories'] = $validated['calories'] !== '' ? $validated['calories'] : null;
+            }
+            if (isset($validated['total_fats'])) {
+                $updateData['total_fats'] = $validated['total_fats'] !== '' ? $validated['total_fats'] : null;
+            }
+            if (isset($validated['proteins'])) {
+                $updateData['proteins'] = $validated['proteins'] !== '' ? $validated['proteins'] : null;
+            }
+            if (isset($validated['carbs'])) {
+                $updateData['carbs'] = $validated['carbs'] !== '' ? $validated['carbs'] : null;
+            }
+            if (isset($validated['cholesterol'])) {
+                $updateData['cholesterol'] = $validated['cholesterol'] !== '' ? $validated['cholesterol'] : null;
+            }
+
+            $recipe->update($updateData);
 
             $ingredientPivotData = [];
             

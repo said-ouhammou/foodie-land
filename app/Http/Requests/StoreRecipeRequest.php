@@ -23,6 +23,15 @@ class StoreRecipeRequest extends FormRequest
             'prep_time' => 'required|integer|min:0',
             'cook_time' => 'required|integer|min:0',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
+            
+            // Nutritional information (optional)
+            'calories' => 'nullable|integer|min:0',
+            'total_fats' => 'nullable|numeric|min:0',
+            'proteins' => 'nullable|numeric|min:0',
+            'carbs' => 'nullable|numeric|min:0',
+            'cholesterol' => 'nullable|integer|min:0',
+            
+            // Ingredients and directions
             'ingredients' => 'required|array|min:1',
             'ingredients.*.title' => 'required|string|max:100',
             'ingredients.*.short_description' => 'nullable|string|max:255',
@@ -50,6 +59,20 @@ class StoreRecipeRequest extends FormRequest
             'image.image' => 'The uploaded file must be an image.',
             'image.mimes' => 'The image must be a file of type: jpeg, png, jpg, webp.',
             'image.max' => 'The image must not be larger than 5MB.',
+            
+            // Nutritional info messages
+            'calories.integer' => 'Calories must be a whole number.',
+            'calories.min' => 'Calories cannot be negative.',
+            'total_fats.numeric' => 'Total fats must be a number.',
+            'total_fats.min' => 'Total fats cannot be negative.',
+            'proteins.numeric' => 'Proteins must be a number.',
+            'proteins.min' => 'Proteins cannot be negative.',
+            'carbs.numeric' => 'Carbs must be a number.',
+            'carbs.min' => 'Carbs cannot be negative.',
+            'cholesterol.integer' => 'Cholesterol must be a whole number.',
+            'cholesterol.min' => 'Cholesterol cannot be negative.',
+            
+            // Ingredients and directions messages
             'ingredients.required' => 'At least one ingredient is required.',
             'ingredients.*.title.required' => 'Ingredient name is required.',
             'ingredients.*.title.max' => 'Ingredient name must not exceed 100 characters.',
@@ -74,6 +97,15 @@ class StoreRecipeRequest extends FormRequest
             $this->merge([
                 'directions' => json_decode($this->directions, true),
             ]);
+        }
+
+        // Convert empty nutritional fields to null
+        $nutritionalFields = ['calories', 'total_fats', 'proteins', 'carbs', 'cholesterol'];
+        
+        foreach ($nutritionalFields as $field) {
+            if ($this->has($field) && ($this->$field === '' || $this->$field === null)) {
+                $this->merge([$field => null]);
+            }
         }
     }
 }

@@ -55,7 +55,7 @@ export default function RecipeDetails({ recipe }: RecipeDetailsProps) {
                                                 PERP TIME
                                             </span>
                                             <span className="text-[10px] tracking-tight text-[#00000099] sm:text-xs">
-                                                {recipe.prep_time}
+                                                {recipe.prep_time} Minute
                                             </span>
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@ export default function RecipeDetails({ recipe }: RecipeDetailsProps) {
                                                 COCK TIME
                                             </span>
                                             <span className="text-[10px] tracking-tight text-[#00000099] sm:text-xs">
-                                                {recipe.cook_time}
+                                                {recipe.cook_time} Minute
                                             </span>
                                         </div>
                                     </div>
@@ -126,34 +126,43 @@ export default function RecipeDetails({ recipe }: RecipeDetailsProps) {
                                             Calories
                                         </p>
                                         <p className="text-sm font-semibold">
-                                            250 Kcal
+                                            {recipe.calories} g
                                         </p>
                                     </div>
 
                                     <div className="border-b-solid mt-3 flex items-center justify-between border-b border-b-gray-200 py-2">
                                         <p className="text-sm text-gray-400">
-                                            Calories
+                                            Total fat
                                         </p>
                                         <p className="text-sm font-semibold">
-                                            250 Kcal
+                                            {recipe.total_fats} g
                                         </p>
                                     </div>
 
                                     <div className="border-b-solid mt-3 flex items-center justify-between border-b border-b-gray-200 py-2">
                                         <p className="text-sm text-gray-400">
-                                            Calories
+                                            Protein
                                         </p>
                                         <p className="text-sm font-semibold">
-                                            250 Kcal
+                                            {recipe.proteins} g
                                         </p>
                                     </div>
 
                                     <div className="border-b-solid mt-3 flex items-center justify-between border-b border-b-gray-200 py-2">
                                         <p className="text-sm text-gray-400">
-                                            Calories
+                                            Carbohydrate
                                         </p>
                                         <p className="text-sm font-semibold">
-                                            250 Kcal
+                                            {recipe.carbs} g
+                                        </p>
+                                    </div>
+
+                                    <div className="border-b-solid mt-3 flex items-center justify-between border-b border-b-gray-200 py-2">
+                                        <p className="text-sm text-gray-400">
+                                            Cholesterol
+                                        </p>
+                                        <p className="text-sm font-semibold">
+                                            {recipe.cholesterol} mg
                                         </p>
                                     </div>
                                 </div>

@@ -3,7 +3,17 @@ import { Button } from '@/components/ui/button';
 import { Recipe } from '@/types/Recipe';
 import { Link } from '@inertiajs/react';
 import { ColumnDef } from '@tanstack/react-table';
-import { ArrowUpDown, ChefHat, Clock, Edit, Eye } from 'lucide-react';
+import {
+    ArrowUpDown,
+    Beef,
+    ChefHat,
+    Clock,
+    Droplets,
+    Edit,
+    Eye,
+    Flame,
+    Heart,
+} from 'lucide-react';
 import { DeleteRecipeButton } from './delete-button';
 
 export const recipeColumns: ColumnDef<Recipe>[] = [
@@ -176,6 +186,162 @@ export const recipeColumns: ColumnDef<Recipe>[] = [
         },
         size: 100,
     },
+    // Nutritional Information Columns
+    {
+        accessorKey: 'calories',
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() =>
+                        column.toggleSorting(column.getIsSorted() === 'asc')
+                    }
+                    className="px-0 hover:bg-transparent"
+                    title="Calories"
+                >
+                    <Flame className="mr-2 h-4 w-4" />
+                    Cal
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                </Button>
+            );
+        },
+        cell: ({ row }) => {
+            const calories = row.getValue('calories') as number | null;
+            return calories ? (
+                <div className="text-center">
+                    <span className="font-medium">{calories}</span>
+                    <span className="ml-1 text-xs text-gray-500">kcal</span>
+                </div>
+            ) : (
+                <div className="text-center text-gray-400">—</div>
+            );
+        },
+        size: 80,
+    },
+    {
+        accessorKey: 'total_fats',
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() =>
+                        column.toggleSorting(column.getIsSorted() === 'asc')
+                    }
+                    className="px-0 hover:bg-transparent"
+                    title="Total Fats"
+                >
+                    <Droplets className="mr-2 h-4 w-4" />
+                    Fats
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                </Button>
+            );
+        },
+        cell: ({ row }) => {
+            const totalFats = row.getValue('total_fats') as number | null;
+            return totalFats ? (
+                <div className="text-center">
+                    <span className="font-medium">{totalFats}</span>
+                    <span className="ml-1 text-xs text-gray-500">g</span>
+                </div>
+            ) : (
+                <div className="text-center text-gray-400">—</div>
+            );
+        },
+        size: 80,
+    },
+    {
+        accessorKey: 'proteins',
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() =>
+                        column.toggleSorting(column.getIsSorted() === 'asc')
+                    }
+                    className="px-0 hover:bg-transparent"
+                    title="Proteins"
+                >
+                    <Beef className="mr-2 h-4 w-4" />
+                    Prot
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                </Button>
+            );
+        },
+        cell: ({ row }) => {
+            const proteins = row.getValue('proteins') as number | null;
+            return proteins ? (
+                <div className="text-center">
+                    <span className="font-medium">{proteins}</span>
+                    <span className="ml-1 text-xs text-gray-500">g</span>
+                </div>
+            ) : (
+                <div className="text-center text-gray-400">—</div>
+            );
+        },
+        size: 80,
+    },
+    {
+        accessorKey: 'carbs',
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() =>
+                        column.toggleSorting(column.getIsSorted() === 'asc')
+                    }
+                    className="px-0 hover:bg-transparent"
+                    title="Carbohydrates"
+                >
+                    <Droplets className="mr-2 h-4 w-4" />
+                    Carbs
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                </Button>
+            );
+        },
+        cell: ({ row }) => {
+            const carbs = row.getValue('carbs') as number | null;
+            return carbs ? (
+                <div className="text-center">
+                    <span className="font-medium">{carbs}</span>
+                    <span className="ml-1 text-xs text-gray-500">g</span>
+                </div>
+            ) : (
+                <div className="text-center text-gray-400">—</div>
+            );
+        },
+        size: 80,
+    },
+    {
+        accessorKey: 'cholesterol',
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() =>
+                        column.toggleSorting(column.getIsSorted() === 'asc')
+                    }
+                    className="px-0 hover:bg-transparent"
+                    title="Cholesterol"
+                >
+                    <Heart className="mr-2 h-4 w-4" />
+                    Chol
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                </Button>
+            );
+        },
+        cell: ({ row }) => {
+            const cholesterol = row.getValue('cholesterol') as number | null;
+            return cholesterol ? (
+                <div className="text-center">
+                    <span className="font-medium">{cholesterol}</span>
+                    <span className="ml-1 text-xs text-gray-500">mg</span>
+                </div>
+            ) : (
+                <div className="text-center text-gray-400">—</div>
+            );
+        },
+        size: 80,
+    },
     {
         accessorKey: 'created_at',
         header: ({ column }) => {
@@ -193,15 +359,10 @@ export const recipeColumns: ColumnDef<Recipe>[] = [
             );
         },
         cell: ({ row }) => {
-            const date = new Date(row.getValue('created_at'));
             return (
                 <div className="text-sm">
-                    {date.toLocaleDateString()}
                     <div className="text-xs text-gray-500">
-                        {date.toLocaleTimeString([], {
-                            hour: '2-digit',
-                            minute: '2-digit',
-                        })}
+                        {row.getValue('created_at')}
                     </div>
                 </div>
             );
@@ -221,8 +382,11 @@ export const recipeColumns: ColumnDef<Recipe>[] = [
                         size="icon"
                         aria-label="View recipe"
                         className="h-8 w-8"
+                        asChild
                     >
-                        <Eye className="h-4 w-4" />
+                        <Link href={`/recipes/${recipe.slug}`}>
+                            <Eye className="h-4 w-4" />
+                        </Link>
                     </Button>
 
                     <Button
@@ -230,6 +394,7 @@ export const recipeColumns: ColumnDef<Recipe>[] = [
                         size="icon"
                         aria-label="Edit recipe"
                         className="h-8 w-8"
+                        asChild
                     >
                         <Link href={`/recipes/${recipe.id}/edit`}>
                             <Edit className="h-4 w-4" />

@@ -22,6 +22,11 @@ return new class extends Migration
             $table->integer('prep_time')->default(0)->comment('Preparation time in minutes');
             $table->integer('cook_time')->default(0)->comment('Cooking time in minutes');
             $table->integer('total_time')->virtualAs('prep_time + cook_time');
+            $table->integer('calories')->nullable();
+            $table->decimal('total_fats', 8, 2)->nullable(); // grams
+            $table->decimal('proteins', 8, 2)->nullable(); // grams
+            $table->decimal('carbs', 8, 2)->nullable(); // grams
+            $table->integer('cholesterol')->nullable(); // milligrams
             $table->boolean('featured')->default(false);
 
             $table->timestamps();
