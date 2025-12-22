@@ -1,7 +1,4 @@
 *
-!public/*
-!public/categories
-!public/categories/*
-!public/recipes
-!public/recipes/*
 !.gitignore
+!recipes/
+!categories/
