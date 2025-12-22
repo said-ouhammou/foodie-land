@@ -84,3 +84,12 @@ Visit:
 
 FoodieLand uses Inertia.js to connect Laravel backend routes to React components.
 This allows React pages to be served directly from Laravel controllers, without building a separate API layer.
+
+#### - Links
+
+👉 http://localhost:8000/login
+
+### Credentials
+
+admin@foodieland.com
+admin
