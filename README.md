@@ -63,6 +63,7 @@ php artisan key:generate
 ###
 
 Update .env with your database credentials.
+!!! Change sqllite to mysql and uncomment the lines and update to your db credentials
 
 ### 3. Run Database Migrations
 
@@ -86,6 +87,7 @@ npm run dev
 
 ### 7. Start the Laravel Server
 
+!!! New Terminal
 php artisan serve
 
 Visit:
