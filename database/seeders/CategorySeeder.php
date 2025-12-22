@@ -22,33 +22,33 @@ class CategorySeeder extends Seeder
         $categories = [
             [
                 'title' => 'Breakfast',
+                'image' => '/categories/breakfast.png',
                 'color' => '#FF6B6B', // Red
-                'image' => 'categories/breakfast.jpg',
-            ],
-            [
-                'title' => 'Lunch',
-                'color' => '#4ECDC4', // Teal
-                'image' => 'categories/lunch.jpg',
-            ],
-            [
-                'title' => 'Dinner',
-                'color' => '#45B7D1', // Blue
-                'image' => 'categories/dinner.jpg',
-            ],
-            [
-                'title' => 'Desserts',
-                'color' => '#96CEB4', // Green
-                'image' => 'categories/desserts.jpg',
-            ],
-            [
-                'title' => 'Vegetarian',
-                'color' => '#FFEAA7', // Yellow
-                'image' => 'categories/vegetarian.jpg',
             ],
             [
                 'title' => 'Vegan',
+                'image' => '/categories/vegan.png',
+                'color' => '#4ECDC4', // Teal
+            ],
+            [
+                'title' => 'Meat',
+                'image' => '/categories/meat.png',
+                'color' => '#45B7D1', // Blue
+            ],
+            [
+                'title' => 'Dessert',
+                'color' => '#96CEB4', // Green
+                'image' => 'categories/desert.png',
+            ],
+            [
+                'title' => 'Lunch',
+                'color' => '#FFEAA7', // Yellow
+                'image' => 'categories/lunch.png',
+            ],
+            [
+                'title' => 'Chocolate',
                 'color' => '#98D8C8', // Mint
-                'image' => 'categories/vegan.jpg',
+                'image' => 'categories/chocolate.png',
                 'is_active' => false, // Example of inactive category
             ],
         
